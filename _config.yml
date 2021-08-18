@@ -1,6 +1,6 @@
 # Site settings
 title: "Fairy Tales"
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/fairytales" # the subpath of your site, e.g. /blog
 #url: "http://yourdomain.com" # the base hostname & protocol for your site
 port: 			  4125
 
