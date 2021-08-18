@@ -1,12 +1,28 @@
 ---
-layout: default
-title: "Home"
+layout: home
+title: "Fairy Tale Literature and the World"
+description: "A database of global literary rewritings of folk and fairy tales"
+header-img: World_Map_Grayscale.png
 ---
 
-<h2>Test of layout = default</h2>
+This site contains a set of **prototypes** with dummy data to begin to explore the data and how it might be displayed.
+It doesn't reflect the final site design, colours, etc.
 
-ie no bootstrap container etc so fills body  width...
+We are interested in _patterns_ in the data, in time & space.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula sit amet ipsum euismod eleifend ac sit amet ante. Fusce sollicitudin, augue sit amet tempor hendrerit, enim erat sodales diam, a suscipit erat mauris tempor ante. Aenean porta odio a tellus viverra bibendum. Cras sit amet erat eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+The key research questions the database should be able to answer are:
 
-Nam vehicula, mi eu mattis viverra, enim enim ullamcorper nulla, id scelerisque purus diam sed lacus. Quisque viverra magna ornare condimentum fringilla. Curabitur fermentum nisl nisi, et maximus nulla mattis vel. Fusce semper diam sapien, et placerat sapien luctus vel. Integer quis aliquam sapien. Cras ut enim mauris. In in vestibulum lectus. Ut eu porta tortor. Sed ac risus quis libero luctus vulputate vel sed lorem. Praesent eget lacus condimentum metus lacinia maximus vitae et nunc.
+- are literary fairy tale retellings a British/N American phenomenon, or are writers reworking fairy tales all over the world?
+- ....
+- ....
+
+
+
+## Prototypes
+<ul>
+  {% comment %} pages  in nav{% endcomment %}
+  {% assign pages = site.pages | where: "nav", "yes" | sort: "sortTitle"  %}
+  {% for page in pages %}
+  <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
