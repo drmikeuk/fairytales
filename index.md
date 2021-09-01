@@ -12,9 +12,10 @@ We are interested in _patterns_ in the data, in time & space.
 
 The key research questions the database should be able to answer are:
 
-- are literary fairy tale retellings a British/N American phenomenon, or are writers reworking fairy tales all over the world?
-- ....
-- ....
+- are literary fairy tale retellings a British / North American phenomenon, or are writers reworking fairy tales all over the world?
+- how has a particular fairy tale (such as Beauty and the Beast) travelled globally across time?
+- compare the number of texts associated with a specific tale published in different countries and different languages
+- identify literary texts that _combine_ different fairy tales to ascertain patterns and connections between tales
 
 
 
