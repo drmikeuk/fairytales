@@ -1,72 +1,3 @@
-// d3: draw simple world map from topojson
-// =======================================
-
-var width = 700,
-    height = 300;
-
-var svg = d3.select("#citiesMap").append("svg")
-    .attr("id", "svg")
-    .attr("width", width)
-    .attr("height", height);
-
-var projection = d3.geoMercator()
-    .scale(280)                             // zoom in
-    .center([-25, 30 ]);                    // center to focus on EU + US
-
-var path = d3.geoPath()
-    .projection(projection);
-
-
-var mapurl = '/fairytales/assets/countries-110m.topojson.json';
-var placesurl = '/fairytales/assets/places.csv';       // just copy off google maps
-Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
-    //if (error) throw error;
-
-    var world = data[0];
-    var places = data[1];
-
-    // draw map
-    svg.selectAll("path")
-       .data(topojson.feature(world,world.objects.countries).features)
-       .enter().append("path")
-       .attr("fill", "#d6dadd")
-       //.attr("stroke", "white")
-       .attr("d", path);
-
-    // draw bubbles for places
-    svg.selectAll("circle")
-       	.data(places)
-        .enter()
-       	.append("circle")
-       	.attr("r", 7)                                           //  (fixed size)
-       	.attr("cx", function(d) {	return projection([d.lng, d.lat])[0]; })
-       	.attr("cy", function(d) {	return projection([d.lng, d.lat])[1]; })
-       	.attr("fill", "darkgreen")
-       	.attr("opacity", 0.5)
-
-    // TEST calc svg x,y from lat,lng
-    places.forEach(place => {
-      //console.log(place);
-      console.log("place: ", place["place"], ", x:", projection([place["lng"], place["lat"]])[0], ", y:", projection([place["lng"], place["lat"]])[1]);
-      //console.log(projection( [place["lng"], place["lat"]] ));  // note  longitude, latitude]
-    });
-
-
-    // DOWNLOAD SVG button
-    // https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
-    var svgData = document.getElementById("svg").outerHTML;
-    var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
-    var svgUrl = URL.createObjectURL(svgBlob);
-    var downloadLink = document.createElement("a");
-    downloadLink.id = 'downloadLink';
-    downloadLink.href = svgUrl;
-    downloadLink.download = "map.svg";
-    var linkText = document.createTextNode("Download as SVG");
-    downloadLink.appendChild(linkText);
-    document.getElementById("download").appendChild(downloadLink);
-});
-
-
 // dc.js: draw bubble map & use projections from above
 // ===================================================
 
@@ -96,7 +27,8 @@ var colours4 = ["#ff4f8a","#007e19","#6263ff","#abb13d","#800078","#e37f00","#00
 
 
 // CREATE OBJECTS & TIE TO HTML ie match to div IDs in the html
-var dataCount = dc.dataCount("#datacount"),
+var yearBarChart = dc.barChart("#chart-bar-year"),
+    dataCount = dc.dataCount("#datacount"),
     countryRowChart = dc.rowChart("#chart-row-country"),
     countryBubbleChart = new dc.BubbleOverlay("#citiesMap2").svg(d3.select("#citiesMap2 svg"));
 
@@ -112,11 +44,13 @@ d3.csv('/fairytales/assets/fairytalesMapDummy.csv').then(data => {
     taleDim = ndx.dimension(d => d.Tale),
     taleSearchDim = ndx.dimension(d => d.Tale),
     countryDim = ndx.dimension(d => d.FirstPublicationLocation),
+    countryMapDim = ndx.dimension(d => d.FirstPublicationLocation),
 		yearDim = ndx.dimension(d => d.Date),
 		all = ndx.groupAll(),
     taleGroup = taleDim.group(),
     taleSearchGroup = taleSearchDim.group(),
     countryGroup = countryDim.group().reduceCount(),
+    countryMapGroup = countryMapDim.group().reduceCount(),
     yearGroup = yearDim.group().reduceCount();
 
 
@@ -130,6 +64,18 @@ d3.csv('/fairytales/assets/fairytalesMapDummy.csv').then(data => {
 
 
 	// CONFIGURE CHART ATTRIBUTES
+  yearBarChart.width(1200).height(100)
+      .dimension(yearDim)
+      .group(yearGroup)
+      .ordinalColors(colours) 	         // my range of colours
+      .x(d3.scaleLinear().domain([1970, 2020]))
+      .centerBar(true)
+      .elasticY(true)
+      //.margins({top:10,bottom:20,right:20,left:30})   // margin to match timeSeriesChart
+      .xAxis().tickFormat(d3.format('d'));    // 1900 not 1,900
+      // NB elastic means rescale axis; may want to turn this off
+  yearBarChart.yAxis().ticks(3);         // --> less ticks! setter so can't chain ie must be last!
+
   countryRowChart.width(400).height(250)
       .dimension(countryDim)
       .group(countryGroup)
@@ -146,8 +92,8 @@ d3.csv('/fairytales/assets/fairytalesMapDummy.csv').then(data => {
   // radius -
   // colour - red #a30202
   countryBubbleChart.width(700).height(300)
-      .dimension(countryDim)
-      .group(countryGroup)
+      .dimension(countryMapDim)
+      .group(countryMapGroup)
       .radiusValueAccessor(function(p) {
           // original: return p.value.avgTotalCrimeRate;
           //return 20; //- draws dots!
@@ -172,8 +118,8 @@ d3.csv('/fairytales/assets/fairytalesMapDummy.csv').then(data => {
       // RENDERING
     	dc.renderAll();
 
-console.log ("countryGroup.top(Infinity) = ..."); // cityYearGroup.top(Infinity)
-console.log (countryGroup.top(Infinity));
+//console.log ("countryGroup.top(Infinity) = ..."); // cityYearGroup.top(Infinity)
+//console.log (countryGroup.top(Infinity));
 
 }); /* close load data */
 
