@@ -21,7 +21,7 @@ var ndx;            // NB now paginating need to define outside of load data
 // LOAD DATA
 // =========
 // NB  special chars so try this? https://stackoverflow.com/questions/38304384/d3-js-read-csv-file-with-special-characters-%C3%A9-%C3%A0-%C3%BC-%C3%A8
-d3.csv('/fairytales/assets/fairytalesSample.csv').then(data => {
+d3.csv('/fairytales/assets/fairytalesDummy.csv').then(data => {
 	// might want to format data a bit here
 	// eg calculate month or year from timestamp
 
@@ -64,7 +64,7 @@ d3.csv('/fairytales/assets/fairytalesSample.csv').then(data => {
 
 
 
-  countryRowChart.width(400).height(250)
+  countryRowChart.width(400).height(400)
       .dimension(countryDim)
       .group(countryGroup)
       .ordinalColors(colours4) 	         // my range of colours
