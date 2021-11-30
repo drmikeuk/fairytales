@@ -20,7 +20,7 @@ var path = d3.geoPath()
 
 
 var mapurl = '/fairytales/assets/countries-110m.topojson.json';
-var placesurl = '/fairytales/assets/places.csv';       // just copy off google maps
+var placesurl = '/fairytales/assets/places2Dummy.csv';       // just copy off google maps
 Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
     //if (error) throw error;
 
