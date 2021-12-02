@@ -91,8 +91,9 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
             //console.log (p.key, " => ", p.value)
             return (p.value / 8);     // value of sum from Group?
         })
+        //.elasticRadius(true)
         .r(d3.scaleLinear().domain([0,150]).range([0,20]))  //.range([0,20]) -- range has no effect!
-        //r(d3.scaleSqrt().domain([0,3000]).range([0,20]))  //.range([0,20]) -- worse as artifically hi domain so all points are pretty similar
+        //.r(d3.scaleSqrt().domain([0,150]).range([0,20]))  //.range([0,20]) -- worse as artifically hi domain 3000 (else too big) so all points are pretty similar
         .colors(["#a30202"])
         //.colorDomain([13, 30])
         //.colorAccessor(function(p) {
@@ -196,6 +197,33 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
 
 	// RENDERING
 	dc.renderAll();
+
+
+
+  // IN CASE WANT TO OUTPUT DATA
+  /*
+  console.log("list countries from countryMapGroup");
+  countries = countryMapGroup.top(Infinity).map(d => d.key).sort();
+  console.log (countries);    // Array: 'Barbados', 'China', 'Dominica', ...
+
+  console.log ("list countries and counts from countryMapGroup");
+  countriesCounts = [];
+  countryMapGroup.top(Infinity).forEach(grabCounts);
+  function grabCounts(item){
+    // console.log (item.key, item.value)
+    countriesCounts.push([item.key,item.value]);
+  };
+  countriesCounts.sort();
+  //console.log (countriesCounts); // ok if want array
+  //countriesCounts.map(d => console.log(d.key, d.value)) // fails
+  countriesCounts.map(d => console.log(d))
+*/
+
+
+
+
+
+
 
 }); /* close load data */
 
