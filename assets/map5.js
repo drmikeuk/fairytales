@@ -60,6 +60,7 @@ Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
 
 
     // 1 - all places in grey ("total")
+
     svg.selectAll("circle")
        	.data(places)
         .enter()
@@ -80,7 +81,7 @@ Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
        	.attr("opacity", 0.8)
 
 
-    // 2 - this place in blue ("this")
+    // 2 - this place in blue ("this") 3498DB
     svg.selectAll("circle2")
        	.data(places)
         .enter()
@@ -100,7 +101,7 @@ Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
        	.attr("fill", "#3498DB")
 
 
-    // 3 - connected places in green #27AE60 ("connected")
+    // 3 - connected places in -green #27AE60- orange ff7f00 ("connected")
     svg.selectAll("circle3")
        	.data(places)
         .enter()
@@ -117,7 +118,7 @@ Promise.all([d3.json(mapurl), d3.csv(placesurl)]).then(function(data) {
         })
        	.attr("cx", function(d) {	return projection([d.lng, d.lat])[0]; })
        	.attr("cy", function(d) {	return projection([d.lng, d.lat])[1]; })
-       	.attr("fill", "#27AE60")
+       	.attr("fill", "#ff7f00")
 /*
 */
 

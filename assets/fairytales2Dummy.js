@@ -9,6 +9,7 @@ var colours2= ["#656d50","#92e63f","#a9ae87","#d9d934","#5e8b54","#5dcf51","#656
 var colours3 =  ["#8f7040","#e28c23","#6b4c33","#e1b340","#766949","#e6c392","#705110","#d69a55","#85644a","#a27b1d","#ad906c","#a06829"]; // yellow lime
 var colours4 = ["#ff4f8a","#007e19","#6263ff","#abb13d","#800078","#e37f00","#00a6f0","#c1006e","#aea3e2","#771224","#d18f7c","#6a3557"]; // pimp
 
+var colours5 = ["#3498DB"]; //blue from map5
 
 // CREATE OBJECTS & TIE TO HTML ie match to div IDs in the html
 var yearBarChart = dc.barChart("#chart-bar-year"),
@@ -56,7 +57,7 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
   yearBarChart.width(1100).height(100)
       .dimension(yearDim)
       .group(yearGroup)
-      .ordinalColors(colours) 	         // my range of colours
+      .ordinalColors(colours5) 	         // my range of colours
       .x(d3.scaleLinear().domain([1970, 2020]))
       .centerBar(true)
       .elasticY(true)
@@ -94,7 +95,7 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
         //.elasticRadius(true)
         .r(d3.scaleLinear().domain([0,150]).range([0,20]))  //.range([0,20]) -- range has no effect!
         //.r(d3.scaleSqrt().domain([0,150]).range([0,20]))  //.range([0,20]) -- worse as artifically hi domain 3000 (else too big) so all points are pretty similar
-        .colors(["#a30202"])
+        .colors(["#ff7f00"])  // was red a30202
         //.colorDomain([13, 30])
         //.colorAccessor(function(p) {
         //    return p.value.violentCrimeRatio;
