@@ -24,6 +24,6 @@ The key research questions the database should be able to answer are:
   {% comment %} pages  in nav{% endcomment %}
   {% assign pages = site.pages | where: "nav", "yes" | sort: "sortTitle"  %}
   {% for page in pages %}
-  <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+  <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a> &mdash; <em>{{ page.strapline }}</em></li>
   {% endfor %}
 </ul>

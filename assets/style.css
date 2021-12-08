@@ -6,6 +6,7 @@
 .banner                 {padding: 0.5rem 0; background: #D6EAF8 /* blue */}
 .banner                 {background: #ACB5BB /* grey from fruits footer */}
 .header p               {margin-bottom: 0.5rem}
+.strap                  {font-weight: 300; font-style: italic;}
 
 #filter                 {margin-bottom: 6px; margin-top: 3px; width:100%; border-color: #ACB5BB}
 #filter::placeholder    {font-style: italic}
@@ -15,7 +16,7 @@
 
 
 /* basics */
-h1                      {font-size: 2rem}
+h1                      {font-size: 2rem; margin-bottom: 0}
 h3                      {font-size: 1.5rem}
 h1, h2, h3              {font-weight: 300}
 
@@ -23,7 +24,7 @@ h1, h2, h3              {font-weight: 300}
 /* home */
 #home .navbar-brand     {display: none}
 .intro-header           {background-color: #ccc; min-height: 300px; padding-top: 3rem; margin-bottom: 20px}
-.home h1                {font-size: 3em; }
+.home h1                {font-size: 3em;}
 .subheading             {font-size: 1.5rem; font-weight: 300; font-style: italic;}
 .fancyLI                {list-style-type: none; }
 .tick li::before     {content: "\f14a"; font-family: 'Font Awesome 5 free'; font-weight: 900; margin:0 10px 0 -20px; color: #6c757d}
@@ -95,7 +96,7 @@ h1, h2, h3              {font-weight: 300}
 /* remove top border */
 table>tbody+tbody      { border-top: 0px !important; }
 
-#download              {float: right;}
+#download              {/* float: right;*/}
 
 
 

@@ -1,6 +1,7 @@
 ---
 layout: dashboard
-title: "Fairytales v2 dummy"
+title: "Tales"
+strapline: "Explore retellings by original tale"
 nav: "yes"
 sortTitle: "b"
 customjs:
@@ -14,7 +15,8 @@ customjs:
   <div class="container-fluid">
   	<div class="header">
   	 	  	<div class="title">
-  					<h1>Fairytales v2: dummy data</h1>
+  					<h1>{{page.title}}</h1>
+            <p class="strap">{{page.strapline}}</p>
   				</div>
   	</div>
     <div class="row">

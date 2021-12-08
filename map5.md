@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "Map5"
+title: "Connected places"
+strapline: "Show locations connected to a particular place"
 nav: "yes"
 sortTitle: "s"
 customjs:
@@ -13,15 +14,17 @@ customjs:
 
 
 <div class="container-fluid clearfix">
-  <h2 style="padding-bottom:1em">Map5: Connected places</h2>
+  <div class="clearfix">
 
-  <div id="sidebar" style="float: left; padding-right: 2em;">
-    <h3>Places connected to: London</h3>
+    <h2>{{page.title}}</h2>
+    <p class="strap" style="padding-bottom:1em">{{page.strapline}}</p>
 
+    <div id="sidebar" style="float: left; padding-right: 2em;">
+      <h3>Places connected to: London</h3>
+    </div>
+
+    <div id="citiesMap" style="float: left;"></div>
 
   </div>
-  <div id="citiesMap" style="float: left;"></div>
-
   <p id="download"></p>
-
 </div>

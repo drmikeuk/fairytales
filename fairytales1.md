@@ -1,7 +1,7 @@
 ---
 layout: dashboard
 title: "Fairytales v1"
-nav: "yes"
+nav: "no"
 sortTitle: "b"
 customjs:
   - /vendor/d3-5.16.0.min.js
