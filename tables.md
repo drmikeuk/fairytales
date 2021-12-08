@@ -9,6 +9,7 @@ sortTitle: "z"
   h3        {padding-top:2em}
   .country  {font-weight:300}
   .nowrap   {white-space: nowrap}
+  .fas      {padding-right: 6px; color: #3498DB}  /* blue as per year barchart */
 </style>
 
 <div class="container-fluid">
@@ -131,6 +132,7 @@ sortTitle: "z"
 
 
       <h3>Five locations: stack data & icons</h3>
+      <p>Add hover to icons for explanation?</p>
       <!--  5 example retellings from CSV file  -->
       <table class="table">
         <thead>
@@ -147,25 +149,25 @@ sortTitle: "z"
           <tr>
             <td>
               {{ retelling.Tale }}
-              <div class="country">{{ retelling.OriginLocation }}</div>
+              <div class="country"><i class="fas fa-globe-americas"></i>{{ retelling.OriginLocation }}</div>
             </td>
             <td>
               {{ retelling.Title }}
-              <div class="country">{{ retelling.RetellingLocation }}</div>
+              <div class="country"><i class="fas fa-book-open"></i>{{ retelling.RetellingLocation }}</div>
             </td>
             <td>
               {{ retelling.Author }}
               <div class="country">
               {% if retelling.AuthorBornLocation == retelling.AuthorLocation %}
-              {{ retelling.AuthorBornLocation }}
+              <i class="fas fa-home"></i>{{ retelling.AuthorBornLocation }}
               {% else %}
-              {{ retelling.AuthorBornLocation }} / {{ retelling.AuthorLocation }}
+              <i class="fas fa-home"></i>{{ retelling.AuthorBornLocation }} / {{ retelling.AuthorLocation }}
               {% endif %}
               </div>
             </td>
             <td>
               {{ retelling.Date }}
-              <div class="country nowrap">{{ retelling.PublicationLocation }}</div>
+              <div class="country nowrap"><i class="fas fa-file-contract"></i>{{ retelling.PublicationLocation }}</div>
             </td>
             <td>
               {{ retelling.Notes }}
