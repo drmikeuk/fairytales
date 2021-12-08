@@ -54,7 +54,7 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
 
 	// CONFIGURE CHART ATTRIBUTES
 
-  yearBarChart.width(1100).height(100)
+  yearBarChart.width(1040).height(100)
       .dimension(yearDim)
       .group(yearGroup)
       .ordinalColors(colours5) 	         // my range of colours
@@ -68,7 +68,7 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
 
 
 
-  countryRowChart.width(350).height(500)
+  countryRowChart.width(330).height(500)
       .dimension(countryDim)
       .group(countryGroup)
       .ordinalColors(colours) 	         // my range of colours
