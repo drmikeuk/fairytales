@@ -42,6 +42,9 @@ customjs:
     </div>
 
     <div class="col-md-9">
+    <h2 id="this-tale"></h2>
+    <p id="this-intro"></p>
+
       <div id="map"></div>
 
       <h3>Country</h3>

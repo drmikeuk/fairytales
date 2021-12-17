@@ -151,6 +151,7 @@ d3.csv('/fairytales/assets/fairytales2Dummy.csv').then(data => {
         return a.value < b.value ? 1 : b.value < a.value ? -1 : 0; // order by value not group key (label)
       })
       //.title(d => d.key)       // DOESNT WORK
+      .on("filtered", updateTale)    // update tale title + intro
       .multiple(false);
 
 
@@ -243,6 +244,37 @@ $(document).ready(function(){
 
 // FUNCTIONS
 // =========
+
+
+// UPDATE TALE TITLE + INTRO if filtered
+function updateTale() {
+  //console.log ("updateTale...");
+  // check if filtered / has been called as reset filters
+  if (taleSearchDim.currentFilter()) {
+    //console.log("filtered: ", taleSearchDim.currentFilter());
+    var title = taleSearchDim.currentFilter()
+
+    // need to look this up based on tale title
+    var introstring = "This category is named after the European Cinderella for practical purposes, as this is the best-known variant of the tale type, and the name conventionally used in fairy tale studies. Within this category are included the Russian variant Vasilisa the Beautiful, the Chinese Yeh Hsien (葉限), the Malaysian Bawang Merah, Bawang Putih, Vietnamese Tấm Cám and others. I have generally indicated in the Notes for a retelling which variant it rewrites, but the Eurocentric nature of this categorisation is acknowledged. The question of researching and decolonising the study of this tale tradition is <a href=''>discussed further in this video</a>.";
+
+    $("#this-tale").html(title);
+    if (title == "Cinderella") {
+      // dummy just for this title; need to look this up based on tale title
+      $("#this-intro").html(introstring);
+    } else {
+      $("#this-intro").html("");
+    }
+
+  } else {
+    // reset
+    //console.log("reset");
+    $("#this-tale").html("");
+    $("#this-intro").html("");
+  }
+
+}
+
+
 
 // PAGINATION
 // https://github.com/dc-js/dc.js/blob/develop/web-src/examples/table-pagination.html
